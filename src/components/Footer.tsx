@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
               <img 
                 src="/lovable-uploads/bdb827ec-f63f-47f5-b953-786fdbc2db0f.png" 
                 alt="SwipeFit Logo" 
-                className="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity" 
+                className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity" 
               />
             </div>
             

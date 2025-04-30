@@ -59,7 +59,7 @@ const ValuePropSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Right side - UI preview */}
+          {/* Right side - UI preview with stock image */}
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 h-full">
               <div className="space-y-4">
@@ -68,34 +68,39 @@ const ValuePropSection: React.FC = () => {
                   <span className="text-sm text-gray-400">Swipe to explore</span>
                 </div>
                 
-                {/* Swipe cards */}
-                <div className="space-y-6">
+                {/* Stock image instead of mockup */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <img 
+                    src="/placeholder.svg"
+                    alt="Fashion Style Preview" 
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                    <div className="text-white">
+                      <p className="font-medium text-lg">Personal Style Universe</p>
+                      <p className="text-sm text-gray-300">Tailored to your preferences</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Style cards */}
+                <div className="space-y-4 mt-4">
                   <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
                     <div className="flex items-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mr-4"></div>
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mr-4"></div>
                       <div>
-                        <p className="text-white font-medium">Date Night?</p>
-                        <p className="text-sm text-gray-400">Swipe Right.</p>
+                        <p className="text-white font-medium">Date Night</p>
+                        <p className="text-sm text-gray-400">Curated Selection</p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
                     <div className="flex items-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-blue-300 rounded-md mr-4"></div>
-                      <div>
-                        <p className="text-white font-medium">Rainy Day Vibes?</p>
-                        <p className="text-sm text-gray-400">Swiped.</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
-                    <div className="flex items-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
+                      <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
                       <div>
                         <p className="text-white font-medium">Weekend Casual</p>
-                        <p className="text-sm text-gray-400">Tap to see more</p>
+                        <p className="text-sm text-gray-400">Perfect match for you</p>
                       </div>
                     </div>
                   </div>
