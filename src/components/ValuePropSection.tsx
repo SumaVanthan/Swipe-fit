@@ -1,0 +1,151 @@
+
+import React, { useEffect, useRef } from 'react';
+import { BrainCircuit, ShirtsIcon, Swipe } from './icons/LucideIcons';
+
+const ValuePropSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    return () => {
+      elements.forEach(el => {
+        observer.unobserve(el);
+      });
+    };
+  }, []);
+  
+  return (
+    <div ref={sectionRef} className="py-24 px-4 bg-black relative">
+      {/* Background elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-swipefit-electricPurple/20 via-transparent to-transparent"></div>
+        </div>
+      </div>
+      
+      <div className="container mx-auto">
+        {/* Split screen layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+          {/* Left side - Glitch text animation */}
+          <div className="reveal opacity-0 translate-y-10 transition-all duration-700 ease-out">
+            <div className="h-full flex flex-col justify-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
+                Fashion Redefined
+              </h2>
+              <div className="space-y-4 text-2xl md:text-3xl font-bold">
+                <p className="animate-glitch-text inline-block">
+                  <span className="text-swipefit-neonGreen">Mood-Driven ↗</span>
+                </p>
+                <p className="animate-glitch-text inline-block delay-100">
+                  <span className="text-swipefit-electricPurple">Occasion-Ready ↗</span> 
+                </p>
+                <p className="animate-glitch-text inline-block delay-200">
+                  <span className="text-white">Budget-Savvy ↗</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right side - UI preview */}
+          <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 h-full">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl text-swipefit-neonGreen font-semibold">Discover Your Style</h3>
+                  <span className="text-sm text-gray-400">Swipe to explore</span>
+                </div>
+                
+                {/* Swipe cards */}
+                <div className="space-y-6">
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mr-4"></div>
+                      <div>
+                        <p className="text-white font-medium">Date Night?</p>
+                        <p className="text-sm text-gray-400">Swipe Right.</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-blue-300 rounded-md mr-4"></div>
+                      <div>
+                        <p className="text-white font-medium">Rainy Day Vibes?</p>
+                        <p className="text-sm text-gray-400">Swiped.</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
+                      <div>
+                        <p className="text-white font-medium">Weekend Casual</p>
+                        <p className="text-sm text-gray-400">Tap to see more</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Key features grid */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white reveal opacity-0 translate-y-10 transition-all duration-700 ease-out">
+          Key Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="bg-black p-8 rounded-xl neon-border reveal opacity-0 translate-y-10 transition-all duration-700 delay-100 ease-out">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-swipefit-electricPurple to-swipefit-neonGreen flex items-center justify-center mb-6">
+                <BrainCircuit className="w-8 h-8 text-black" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">AI-Powered Precision</h3>
+              <p className="text-gray-400">Our neural network learns your preferences with every swipe, creating a fashion fingerprint as unique as you are.</p>
+            </div>
+          </div>
+          
+          {/* Feature 2 */}
+          <div className="bg-black p-8 rounded-xl neon-border reveal opacity-0 translate-y-10 transition-all duration-700 delay-200 ease-out">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-swipefit-electricPurple to-swipefit-neonGreen flex items-center justify-center mb-6">
+                <ShirtsIcon className="w-8 h-8 text-black" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">Closet That Learns You</h3>
+              <p className="text-gray-400">Discover pieces that adapt to your lifestyle, budget, and body type—all without endless scrolling.</p>
+            </div>
+          </div>
+          
+          {/* Feature 3 */}
+          <div className="bg-black p-8 rounded-xl neon-border reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-swipefit-electricPurple to-swipefit-neonGreen flex items-center justify-center mb-6">
+                <Swipe className="w-8 h-8 text-black" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">Zero Guesswork, All Style</h3>
+              <p className="text-gray-400">Swipe right on what you love, left on what you don't. That's all it takes to build your personal style universe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ValuePropSection;
