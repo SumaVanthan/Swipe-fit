@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { BrainCircuit, ShirtsIcon, Swipe } from './icons/LucideIcons';
+import { BrainCircuit, ShirtsIcon, Swipe, Infinity } from 'lucide-react';
 
 const ValuePropSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -59,16 +59,19 @@ const ValuePropSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Right side - UI preview with stock image */}
+          {/* Right side - UI preview with expanded style options */}
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 h-full">
               <div className="space-y-4">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl text-swipefit-neonGreen font-semibold">Discover Your Style</h3>
-                  <span className="text-sm text-gray-400">Swipe to explore</span>
+                  <h3 className="text-xl text-swipefit-neonGreen font-semibold flex items-center gap-2">
+                    <Infinity size={20} /> 
+                    Discover Your Style
+                  </h3>
+                  <span className="text-sm text-gray-400">Unlimited possibilities</span>
                 </div>
                 
-                {/* Stock image instead of mockup */}
+                {/* Stock image */}
                 <div className="relative overflow-hidden rounded-lg">
                   <img 
                     src="/placeholder.svg"
@@ -77,30 +80,35 @@ const ValuePropSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
                     <div className="text-white">
-                      <p className="font-medium text-lg">Personal Style Universe</p>
-                      <p className="text-sm text-gray-300">Tailored to your preferences</p>
+                      <p className="font-medium text-lg">Infinite Style Universe</p>
+                      <p className="text-sm text-gray-300">Beyond categories and limitations</p>
                     </div>
                   </div>
                 </div>
                 
-                {/* Style cards */}
+                {/* Style carousel - showing variety */}
                 <div className="space-y-4 mt-4">
                   <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
                     <div className="flex items-center">
                       <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mr-4"></div>
                       <div>
-                        <p className="text-white font-medium">Date Night</p>
-                        <p className="text-sm text-gray-400">Curated Selection</p>
+                        <p className="text-white font-medium">Endless Categories</p>
+                        <p className="text-sm text-gray-400">From casual to formal and everything between</p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
-                      <div>
-                        <p className="text-white font-medium">Weekend Casual</p>
-                        <p className="text-sm text-gray-400">Perfect match for you</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
+                        <div>
+                          <p className="text-white font-medium">Your Personal Collection</p>
+                          <p className="text-sm text-gray-400">Tailored to your unique taste</p>
+                        </div>
+                      </div>
+                      <div className="text-swipefit-neonGreen text-xs flex items-center">
+                        <span className="mr-1">∞</span> styles
                       </div>
                     </div>
                   </div>

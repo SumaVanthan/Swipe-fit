@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             
             <div className="text-center md:text-right">
               <p className="text-sm text-gray-400">
-                Swipe Fit™ — Rewriting the rules. One swipe at a time.
+                Swipe Fit™ - Rewriting the rules. One swipe at a time.
               </p>
               <p className="text-xs text-gray-600 mt-2">
                 &copy; {new Date().getFullYear()} SwipeFit. All rights reserved.
