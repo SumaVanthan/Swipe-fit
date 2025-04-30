@@ -33,15 +33,15 @@ const HeroSection: React.FC = () => {
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center overflow-hidden">
       {/* Background with animated gradient mesh */}
-      <div className="absolute inset-0 bg-gradient-mesh opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-mesh opacity-40"></div>
       
       {/* Circular glowing elements */}
-      <div className="absolute top-1/4 left-1/5 w-60 h-60 bg-swipefit-electricPurple rounded-full blur-[100px] opacity-30"></div>
-      <div className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-swipefit-neonGreen rounded-full blur-[100px] opacity-20"></div>
+      <div className="absolute top-1/4 left-1/5 w-60 h-60 bg-swipefit-electricPurple rounded-full blur-[100px] opacity-20"></div>
+      <div className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-swipefit-neonGreen rounded-full blur-[100px] opacity-10"></div>
       
       {/* Grid overlay for cyberpunk effect */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
           backgroundSize: '20px 20px'
@@ -49,14 +49,17 @@ const HeroSection: React.FC = () => {
       ></div>
 
       <div className="container mx-auto px-4 z-10 text-center">
-        {/* Logo animation */}
+        {/* Logo animation with better blending */}
         <div className="mb-8">
-          <img 
-            src="/lovable-uploads/bdb827ec-f63f-47f5-b953-786fdbc2db0f.png" 
-            alt="SwipeFit Logo" 
-            className="w-32 h-32 mx-auto mb-4" 
-            id="logo"
-          />
+          <div className="relative inline-block">
+            <img 
+              src="/lovable-uploads/bdb827ec-f63f-47f5-b953-786fdbc2db0f.png" 
+              alt="SwipeFit Logo" 
+              className="w-32 h-32 mx-auto mb-4 opacity-90 filter drop-shadow-[0_0_8px_rgba(0,255,136,0.4)]" 
+              id="logo"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 mix-blend-overlay"></div>
+          </div>
           <h1 className="holographic-text text-6xl md:text-8xl font-bold mb-4">SWIPE FIT</h1>
         </div>
 
