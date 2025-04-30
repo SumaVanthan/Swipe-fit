@@ -1,20 +1,34 @@
 
 import React from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Grid3x3 } from 'lucide-react';
 
 const TeaserSection: React.FC = () => {
-  // Array of organized tags
-  const floatingTags = [
-    { id: 1, text: "50% OFF", category: "Deals" },
-    { id: 2, text: "Late Night Fit", category: "Occasions" },
-    { id: 3, text: "Summer Sale", category: "Seasons" },
-    { id: 4, text: "Perfect Match", category: "Style" },
-    { id: 5, text: "Date Night", category: "Occasions" },
-    { id: 6, text: "Trending Now", category: "Popular" },
-    { id: 7, text: "Office Ready", category: "Style" },
-    { id: 8, text: "Weekend Vibes", category: "Occasions" },
-    { id: 9, text: "Seasonal Picks", category: "Seasons" }
+  // Better organized fashion categories for improved readability
+  const styleCategories = [
+    {
+      title: "Personalized Help",
+      tags: [
+        { id: 1, text: "Style Assistant" },
+        { id: 2, text: "Outfit Recommendations" },
+        { id: 3, text: "Personal Shopper" }
+      ]
+    },
+    {
+      title: "Seamless Experience",
+      tags: [
+        { id: 4, text: "One-Tap Purchase" },
+        { id: 5, text: "Instant Matching" },
+        { id: 6, text: "Virtual Try-On" }
+      ]
+    },
+    {
+      title: "Smart Shopping",
+      tags: [
+        { id: 7, text: "Price Tracking" },
+        { id: 8, text: "Best Deals Alert" },
+        { id: 9, text: "Budget-Friendly Options" }
+      ]
+    }
   ];
 
   return (
@@ -36,35 +50,32 @@ const TeaserSection: React.FC = () => {
         </h2>
         
         <div className="mb-12 text-center">
-          <p className="text-xl text-white max-w-2xl mx-auto">
-            We're here to <span className="text-swipefit-neonGreen">simplify</span> your shopping experience and 
+          <p className="text-xl text-white max-w-2xl mx-auto leading-relaxed">
+            We're here to <span className="text-swipefit-neonGreen">simplify</span> your shopping journey and 
             help you discover styles that truly reflect <span className="text-swipefit-neonGreen">who you are</span>.
+            Experience a shopping revolution that puts <span className="text-swipefit-neonGreen">you first</span>.
           </p>
         </div>
         
-        {/* Card grid layout for better organization */}
+        {/* Better organized card grid with clear categories */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {['Deals', 'Occasions', 'Style'].map(category => (
-            <Card key={category} className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-swipefit-neonGreen transition-all duration-300">
+          {styleCategories.map((category) => (
+            <Card key={category.title} className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-swipefit-neonGreen transition-all duration-300">
               <CardHeader className="pb-2">
-                <h3 className="text-xl font-medium text-swipefit-neonGreen flex items-center gap-2">
-                  {category === 'Style' && <Grid3x3 size={18} />}
-                  {category}
+                <h3 className="text-xl font-medium text-swipefit-neonGreen">
+                  {category.title}
                 </h3>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  {floatingTags
-                    .filter(tag => tag.category === category)
-                    .map(tag => (
-                      <span 
-                        key={tag.id}
-                        className="px-3 py-1 bg-gray-800/70 backdrop-blur text-white text-sm border border-gray-700 rounded-md hover:border-swipefit-neonGreen transition-all duration-300"
-                      >
-                        {tag.text}
-                      </span>
-                    ))
-                  }
+                  {category.tags.map(tag => (
+                    <span 
+                      key={tag.id}
+                      className="px-3 py-1 bg-gray-800/70 backdrop-blur text-white text-sm border border-gray-700 rounded-md hover:border-swipefit-neonGreen hover:bg-gray-800 transition-all duration-300"
+                    >
+                      {tag.text}
+                    </span>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -73,7 +84,7 @@ const TeaserSection: React.FC = () => {
         
         <div className="max-w-2xl mx-auto text-center mt-12">
           <p className="text-lg md:text-xl text-gray-300">
-            Imagine a world where your closet evolves as fast as your Instagram feed. We're building it. Stay curious.
+            Never before has shopping been this intuitive. We're building a personalized fashion experience that evolves with you, making style discoveries effortless and enjoyable.
           </p>
         </div>
       </div>

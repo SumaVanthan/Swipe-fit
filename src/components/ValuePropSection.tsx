@@ -2,6 +2,13 @@
 import React, { useEffect, useRef } from 'react';
 import { BrainCircuit, Shirt, Infinity } from 'lucide-react';
 import { Swipe } from '@/components/icons/LucideIcons';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 
 const ValuePropSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -60,7 +67,7 @@ const ValuePropSection: React.FC = () => {
             </div>
           </div>
           
-          {/* Right side - UI preview with expanded style options */}
+          {/* Right side - UI preview with infinite style options */}
           <div className="reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 h-full">
               <div className="space-y-4">
@@ -69,7 +76,7 @@ const ValuePropSection: React.FC = () => {
                     <Infinity size={20} /> 
                     Discover Your Style
                   </h3>
-                  <span className="text-sm text-gray-400">Unlimited possibilities</span>
+                  <span className="text-sm text-gray-400">Endless possibilities</span>
                 </div>
                 
                 {/* Stock image */}
@@ -87,32 +94,42 @@ const ValuePropSection: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Style carousel - showing variety */}
-                <div className="space-y-4 mt-4">
-                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-md mr-4"></div>
-                      <div>
-                        <p className="text-white font-medium">Endless Categories</p>
-                        <p className="text-sm text-gray-400">From casual to formal and everything between</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-red-400 rounded-md mr-4"></div>
-                        <div>
-                          <p className="text-white font-medium">Your Personal Collection</p>
-                          <p className="text-sm text-gray-400">Tailored to your unique taste</p>
-                        </div>
-                      </div>
-                      <div className="text-swipefit-neonGreen text-xs flex items-center">
-                        <span className="mr-1">∞</span> styles
-                      </div>
-                    </div>
-                  </div>
+                {/* Infinite style carousel */}
+                <div className="mt-4">
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {[
+                        { name: "Casual", count: "∞" },
+                        { name: "Formal", count: "∞" },
+                        { name: "Streetwear", count: "∞" },
+                        { name: "Vintage", count: "∞" },
+                        { name: "Athletic", count: "∞" },
+                        { name: "Business", count: "∞" },
+                        { name: "Bohemian", count: "∞" }
+                      ].map((style, index) => (
+                        <CarouselItem key={index} className="md:basis-1/2">
+                          <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700 transform hover:scale-105 transition-transform h-full">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center">
+                                <div className="w-12 h-12 bg-gradient-to-br from-swipefit-electricPurple to-swipefit-neonGreen opacity-75 rounded-md mr-4 flex items-center justify-center">
+                                  <span className="text-black font-bold">{index + 1}</span>
+                                </div>
+                                <div>
+                                  <p className="text-white font-medium">{style.name}</p>
+                                  <p className="text-sm text-gray-400">And many more...</p>
+                                </div>
+                              </div>
+                              <div className="text-swipefit-neonGreen text-xs flex items-center">
+                                <span className="mr-1">{style.count}</span> styles
+                              </div>
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-0 bg-gray-900/80 border-gray-700 text-white hover:bg-gray-800 hover:text-white" />
+                    <CarouselNext className="right-0 bg-gray-900/80 border-gray-700 text-white hover:bg-gray-800 hover:text-white" />
+                  </Carousel>
                 </div>
               </div>
             </div>
@@ -142,7 +159,7 @@ const ValuePropSection: React.FC = () => {
                 <Shirt className="w-8 h-8 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-4 text-white">Closet That Learns You</h3>
-              <p className="text-gray-400">Discover pieces that adapt to your lifestyle, budget, and body type—all without endless scrolling.</p>
+              <p className="text-gray-400">Discover pieces that adapt to your lifestyle, budget, and body type-all without endless scrolling.</p>
             </div>
           </div>
           
