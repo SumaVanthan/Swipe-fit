@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Slider } from '@/components/ui/slider';
 
 const TeaserSection: React.FC = () => {
   // Better organized fashion categories for improved readability
@@ -31,6 +32,15 @@ const TeaserSection: React.FC = () => {
     }
   ];
 
+  // Style universes to emphasize the infinity of styles
+  const styleUniverses = [
+    "Casual", "Formal", "Streetwear", "Vintage", "Athletic", 
+    "Business", "Bohemian", "Minimalist", "Preppy", "Grunge", 
+    "Retro", "Hip-Hop", "Punk", "Gothic", "Western", 
+    "Androgynous", "Avant-garde", "Artsy", "Y2K", "Cottagecore",
+    "Normcore", "Academia", "E-Girl/Boy", "Luxe", "Cyberpunk"
+  ];
+
   return (
     <div className="py-20 px-4 bg-black relative">
       {/* Background grid pattern */}
@@ -55,6 +65,37 @@ const TeaserSection: React.FC = () => {
             help you discover styles that truly reflect <span className="text-swipefit-neonGreen">who you are</span>.
             Experience a shopping revolution that puts <span className="text-swipefit-neonGreen">you first</span>.
           </p>
+        </div>
+        
+        {/* Style universe slider */}
+        <div className="mb-16 bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-6 rounded-xl">
+          <h3 className="text-2xl font-medium text-swipefit-neonGreen mb-6">
+            Endless Style Universe
+          </h3>
+          
+          <div className="mb-8">
+            <p className="text-white mb-4">With hundreds of styles and counting...</p>
+            <Slider defaultValue={[75]} max={100} step={1} className="mb-2" />
+            <div className="flex justify-between text-xs text-gray-400">
+              <span>25+ Fashion Categories</span>
+              <span>100+ Style Combinations</span>
+              <span>∞ Possibilities</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto custom-scrollbar pb-2">
+            {styleUniverses.map((style, index) => (
+              <span 
+                key={index}
+                className="px-3 py-1 bg-gray-800/70 backdrop-blur text-white text-sm border border-gray-700 rounded-md hover:border-swipefit-neonGreen hover:bg-gray-800 transition-all duration-300"
+              >
+                {style}
+              </span>
+            ))}
+            <span className="px-3 py-1 bg-swipefit-electricPurple/30 backdrop-blur text-white text-sm border border-swipefit-electricPurple rounded-md">
+              + Many More...
+            </span>
+          </div>
         </div>
         
         {/* Better organized card grid with clear categories */}
