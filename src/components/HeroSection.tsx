@@ -34,14 +34,18 @@ const HeroSection: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-swipefit-neonGreen rounded-full blur-[100px] opacity-10"></div>
 
       <div className="container mx-auto px-4 z-10 text-center">
-        {/* Minimalist logo with better blending */}
+        {/* Updated logo with better visibility ensuring */}
         <div className="mb-12 flex flex-col items-center">
-          <img 
-            src="/lovable-uploads/bdb827ec-f63f-47f5-b953-786fdbc2db0f.png" 
-            alt="SwipeFit Logo" 
-            className="w-28 h-28 opacity-90 filter drop-shadow-[0_0_8px_rgba(0,255,136,0.4)]" 
-            id="logo"
-          />
+          <div className="relative w-40 h-40 flex items-center justify-center">
+            {/* Adding a subtle glow behind the logo for better contrast */}
+            <div className="absolute inset-0 bg-black/40 rounded-full blur-md"></div>
+            <img 
+              src="/lovable-uploads/598d74d5-3cec-40dc-8086-b5192e2041ca.png" 
+              alt="SwipeFit Logo" 
+              className="w-40 h-40 relative z-10 drop-shadow-[0_0_10px_rgba(138,43,226,0.5)]" 
+              id="logo"
+            />
+          </div>
           <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">SWIPE FIT</h1>
         </div>
 
