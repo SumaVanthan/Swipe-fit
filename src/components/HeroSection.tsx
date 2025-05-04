@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
       <div className="absolute bottom-1/4 right-1/5 w-80 h-80 bg-swipefit-neonGreen rounded-full blur-[100px] opacity-10"></div>
 
       <div className="container mx-auto px-4 z-10 text-center">
-        {/* Updated logo with better visibility ensuring */}
+        {/* Logo with the text removed */}
         <div className="mb-12 flex flex-col items-center">
           <div className="relative w-40 h-40 flex items-center justify-center">
             {/* Adding a subtle glow behind the logo for better contrast */}
@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
               id="logo"
             />
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold mt-4 text-white">SWIPE FIT</h1>
+          {/* Removed the SWIPE FIT text that was here */}
         </div>
 
         <h2 className="text-2xl md:text-3xl mb-8 text-white max-w-3xl mx-auto">
