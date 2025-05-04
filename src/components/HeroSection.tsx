@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -40,7 +39,7 @@ const HeroSection: React.FC = () => {
             {/* Adding a subtle glow behind the logo for better contrast */}
             <div className="absolute inset-0 bg-black/40 rounded-full blur-md"></div>
             <img 
-              src="/lovable-uploads/598d74d5-3cec-40dc-8086-b5192e2041ca.png" 
+              src="/logo.png" 
               alt="SwipeFit Logo" 
               className="w-40 h-40 relative z-10 drop-shadow-[0_0_10px_rgba(138,43,226,0.5)]" 
               id="logo"

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { BrainCircuit, Shirt, Infinity } from 'lucide-react';
 import { Swipe } from '@/components/icons/LucideIcons';
@@ -82,7 +81,7 @@ const ValuePropSection: React.FC = () => {
                 {/* Stock image */}
                 <div className="relative overflow-hidden rounded-lg">
                   <img 
-                    src="/placeholder.svg"
+                    src="/Infinite Style Universe.png"
                     alt="Fashion Style Preview" 
                     className="w-full h-64 object-cover"
                   />
@@ -167,7 +166,11 @@ const ValuePropSection: React.FC = () => {
           <div className="bg-black p-8 rounded-xl neon-border reveal opacity-0 translate-y-10 transition-all duration-700 delay-300 ease-out">
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-swipefit-electricPurple to-swipefit-neonGreen flex items-center justify-center mb-6">
-                <Swipe className="w-8 h-8 text-black" />
+                <img 
+                  src="/rotate.png"
+                  alt="Rotate Icon"
+                  className="w-8 h-8"
+                />
               </div>
               <h3 className="text-xl font-bold mb-4 text-white">Zero Guesswork, All Style</h3>
               <p className="text-gray-400">Swipe right on what you love, left on what you don't. That's all it takes to build your personal style universe.</p>

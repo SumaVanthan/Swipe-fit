@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -9,7 +8,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <img 
-                src="/lovable-uploads/598d74d5-3cec-40dc-8086-b5192e2041ca.png" 
+                src="/logo.png" 
                 alt="SwipeFit Logo" 
                 className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity" 
               />
