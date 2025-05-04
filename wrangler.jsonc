@@ -3,12 +3,5 @@
   "compatibility_date": "2024-05-04",
   "assets": {
     "directory": "./dist"
-  },
-  "site": {
-    "bucket": "./dist"
-  },
-  "main": "dist/index.html",
-  "routes": [
-    { "pattern": "*", "script": "index.html" }
-  ]
+  }
 } 
