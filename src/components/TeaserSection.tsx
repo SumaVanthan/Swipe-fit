@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { RefreshCw, Combine, Layers } from 'lucide-react';
+import { Combine, Layers, RefreshCw } from 'lucide-react';
 
 const TeaserSection: React.FC = () => {
   return (
@@ -76,34 +75,6 @@ const TeaserSection: React.FC = () => {
                   Build your look layer by layer, from basics to statement pieces that align with your vibe.
                 </p>
               </div>
-            </div>
-            
-            {/* Style tags showcase */}
-            <div className="mt-8 pt-6 border-t border-gray-700">
-              <h4 className="text-lg font-medium text-white mb-4">Popular Style Elements</h4>
-              <div className="flex flex-wrap gap-2">
-                {['Casual', 'Formal', 'Streetwear', 'Vintage', 'Athletic', 'Minimalist', 
-                  'Bohemian', 'Y2K', 'Cyberpunk', 'Academia'].map((style, index) => (
-                  <span 
-                    key={index}
-                    className={`px-3 py-1 text-sm rounded-full transition-all 
-                    ${index % 3 === 0 ? 'bg-swipefit-electricPurple/30 border border-swipefit-electricPurple/50' : 
-                      index % 3 === 1 ? 'bg-swipefit-neonGreen/30 border border-swipefit-neonGreen/50' : 
-                      'bg-purple-500/30 border border-purple-500/50'}`}
-                  >
-                    {style}
-                  </span>
-                ))}
-                <span className="px-3 py-1 text-sm rounded-full bg-gray-700/50 border border-gray-600">
-                  + Many More
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-8 text-center">
-              <Button className="bg-gradient-to-r from-swipefit-electricPurple to-swipefit-neonGreen text-black font-bold hover:opacity-90 hover:scale-105 transition-all">
-                Discover Your Style
-              </Button>
             </div>
           </div>
         </div>
