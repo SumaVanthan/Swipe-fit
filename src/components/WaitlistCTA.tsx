@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React, { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
@@ -9,18 +10,79 @@ const WaitlistCTA: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email && email.includes('@')) {
+=======
+import React, { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
+
+const emailSchema = z.string().email('Please enter a valid email address');
+
+const API_URL = import.meta.env.VITE_API_URL || '';
+
+const WaitlistCTA: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      // Validate email format
+      emailSchema.parse(email);
+      
+      setIsSubmitting(true);
+      const response = await fetch(`${API_URL}/api/early-access`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
+
+>>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
       toast({
         title: "You're on the waitlist!",
         description: "We'll notify you when SwipeFit launches.",
         variant: "default",
       });
       setEmail('');
+<<<<<<< HEAD
     } else {
       toast({
         title: "Error",
         description: "Please enter a valid email address.",
         variant: "destructive",
       });
+=======
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        toast({
+          title: "Invalid Email",
+          description: err.errors[0].message,
+          variant: "destructive",
+        });
+      } else if (err instanceof Error && err.message === 'Email already registered') {
+        toast({
+          title: "Already Registered",
+          description: "This email is already on our waitlist.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+>>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
     }
   };
   
@@ -47,12 +109,23 @@ const WaitlistCTA: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="swipe-input pr-32 py-4 text-lg"
             required
+<<<<<<< HEAD
           />
           <button 
             type="submit" 
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-swipefit-neonGreen text-black px-6 py-2 font-medium rounded hover:opacity-90 transition-opacity"
           >
             JOIN
+=======
+            disabled={isSubmitting}
+          />
+          <button 
+            type="submit" 
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-swipefit-neonGreen text-black px-6 py-2 font-medium rounded hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'JOINING...' : 'JOIN'}
+>>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
           </button>
         </form>
         
