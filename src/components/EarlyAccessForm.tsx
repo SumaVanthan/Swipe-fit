@@ -3,11 +3,8 @@ import { z } from 'zod';
 
 const emailSchema = z.string().email('Please enter a valid email address');
 
-interface EarlyAccessFormProps {
-  onSubmit: (email: string) => Promise<void>;
-}
-
-export function EarlyAccessForm({ onSubmit }: EarlyAccessFormProps) {
+// Update the component definition to remove the onSubmit prop
+export function EarlyAccessForm() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,21 +15,58 @@ export function EarlyAccessForm({ onSubmit }: EarlyAccessFormProps) {
     setError(null);
     
     try {
-      // Validate email format
       emailSchema.parse(email);
-      
       setIsSubmitting(true);
-      await onSubmit(email);
+
+      // New fetch call to the /api/waitlist endpoint
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        // Try to parse the error message from the response
+        let errorMessage = 'An error occurred. Please try again.';
+        try {
+          const errorData = await response.json();
+          if (errorData && errorData.message) {
+            errorMessage = errorData.message;
+          } else if (response.statusText) {
+            errorMessage = response.statusText;
+          }
+        } catch (parseError) {
+          // Ignore if parsing fails, use default error message
+        }
+        // Specific check for email exists, assuming the API might return a specific status or message
+        if (response.status === 409) { // Assuming 409 Conflict for existing email
+             setError('This email is already registered for early access');
+        } else {
+             setError(errorMessage);
+        }
+        setIsSuccess(false); // Ensure success state is false on error
+        // throw new Error(errorMessage); // We set error state instead of throwing
+        return; // Stop execution if response is not ok
+      }
+
+      // Assuming the API returns a success message
+      // const result = await response.json();
+      // console.log(result.message); // Optional: log success message
+
       setIsSuccess(true);
       setEmail('');
     } catch (err) {
       if (err instanceof z.ZodError) {
         setError(err.errors[0].message);
-      } else if (err instanceof Error && err.message === 'EMAIL_EXISTS') {
-        setError('This email is already registered for early access');
+      } else if (err instanceof Error) {
+        // This will now primarily catch network errors or issues before fetch
+        setError(err.message);
       } else {
-        setError('An error occurred. Please try again.');
+        setError('An unexpected error occurred. Please try again.');
       }
+      setIsSuccess(false); // Ensure success state is false on error
     } finally {
       setIsSubmitting(false);
     }
