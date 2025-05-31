@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-
-import React, { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
-
-const WaitlistCTA: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const { toast } = useToast();
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email && email.includes('@')) {
-=======
 import React, { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
@@ -45,21 +32,12 @@ const WaitlistCTA: React.FC = () => {
         throw new Error(data.message);
       }
 
->>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
       toast({
         title: "You're on the waitlist!",
         description: "We'll notify you when SwipeFit launches.",
         variant: "default",
       });
       setEmail('');
-<<<<<<< HEAD
-    } else {
-      toast({
-        title: "Error",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-=======
     } catch (err) {
       if (err instanceof z.ZodError) {
         toast({
@@ -82,7 +60,6 @@ const WaitlistCTA: React.FC = () => {
       }
     } finally {
       setIsSubmitting(false);
->>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
     }
   };
   
@@ -109,14 +86,6 @@ const WaitlistCTA: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="swipe-input pr-32 py-4 text-lg"
             required
-<<<<<<< HEAD
-          />
-          <button 
-            type="submit" 
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-swipefit-neonGreen text-black px-6 py-2 font-medium rounded hover:opacity-90 transition-opacity"
-          >
-            JOIN
-=======
             disabled={isSubmitting}
           />
           <button 
@@ -125,7 +94,6 @@ const WaitlistCTA: React.FC = () => {
             disabled={isSubmitting}
           >
             {isSubmitting ? 'JOINING...' : 'JOIN'}
->>>>>>> ef9a5a4 (Initial production-ready commit for Cloudflare Pages)
           </button>
         </form>
         
