@@ -19,7 +19,7 @@ const WaitlistCTA: React.FC = () => {
       emailSchema.parse(email);
       
       setIsSubmitting(true);
-      const response = await fetch(`${API_URL}/api/early-access`, {
+      const response = await fetch(`${API_URL}/api/waitlist`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
