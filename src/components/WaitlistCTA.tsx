@@ -15,11 +15,11 @@ const WaitlistCTA: React.FC = () => {
     e.preventDefault();
     
     try {
-      // Validate email format
+      // Validate email format client-side first
       emailSchema.parse(email);
       
       setIsSubmitting(true);
-      const response = await fetch(`${API_URL}/api/waitlist`, {
+      const response = await fetch(`${API_URL}/waitlist`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,34 +27,52 @@ const WaitlistCTA: React.FC = () => {
         body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message);
+      const responseData = await response.json(); // Parse JSON response
+
+      if (response.ok) { // Status 200-299
+        if (response.status === 201) { // HTTP 201 Created (newly added)
+          toast({
+            title: "Success!",
+            description: responseData.message || "You've been added to the waitlist.",
+            variant: "default", // Or a success variant if you have one
+          });
+        } else if (response.status === 200) { // HTTP 200 OK (already exists, or other success)
+          toast({
+            title: "Got it!", // Or a more appropriate title
+            description: responseData.message || "Thanks! We’ve already got your interest.",
+            variant: "default", // Or an info variant
+          });
+        } else { // Other 2xx statuses, treat as generic success
+           toast({
+            title: "Success!",
+            description: responseData.message || "Request successful.",
+            variant: "default",
+          });
+        }
+        setEmail(''); // Clear email on any success
+      } else {
+        // Handle non-ok responses (4xx, 5xx)
+        // responseData.error should contain the error message from the worker
+        toast({
+          title: "Error",
+          description: responseData.error || response.statusText || "An error occurred. Please try again.",
+          variant: "destructive",
+        });
       }
 
-      toast({
-        title: "You're on the waitlist!",
-        description: "We'll notify you when SwipeFit launches.",
-        variant: "default",
-      });
-      setEmail('');
-    } catch (err) {
+    } catch (err) { // Catches ZodError or network errors (fetch itself failed)
       if (err instanceof z.ZodError) {
         toast({
           title: "Invalid Email",
-          description: err.errors[0].message,
-          variant: "destructive",
-        });
-      } else if (err instanceof Error && err.message === 'Email already registered') {
-        toast({
-          title: "Already Registered",
-          description: "This email is already on our waitlist.",
+          description: err.errors[0].message, // Zod provides detailed error messages
           variant: "destructive",
         });
       } else {
+        // This catches network errors, or if response.json() fails (e.g. non-JSON error response from server)
+        console.error("Fetch or JSON parsing error:", err);
         toast({
-          title: "Error",
-          description: "Something went wrong. Please try again.",
+          title: "Network Error",
+          description: "Could not connect to the server. Please try again later.",
           variant: "destructive",
         });
       }
