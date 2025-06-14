@@ -1,0 +1,6 @@
+name = "swipefit-api-worker"
+main = "api-worker.js"
+compatibility_date = "2024-05-31" # Or your chosen date
+
+[vars]
+SUPABASE_URL = "https://ezwhmcpqdtlhokrbuufr.supabase.co"
