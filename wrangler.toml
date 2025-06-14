@@ -1,0 +1,11 @@
+name = "swipefit-api-worker"
+main = "api-worker.js"
+compatibility_date = "2024-05-31" # User should update to a more current date when actually deploying
+
+[vars]
+SUPABASE_URL = "https://ezwhmcpqdtlhokrbuufr.supabase.co"
+
+# Optional: Add KV namespace bindings if you were to use KV for the waitlist
+# [[kv_namespaces]]
+# binding = "WAITLIST_KV"
+# id = "your_kv_namespace_id_here" # User needs to create this in Cloudflare dashboard and get its ID

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp public/_routes.json dist/_routes.json && ls -la dist/",
+    "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -63,7 +63,9 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.3",
     "zod": "^3.25.36",
-    "@rollup/rollup-linux-x64-gnu": "^4.20.0"
+    "@rollup/rollup-linux-x64-gnu": "^4.20.0",
+    "@swc/core-linux-x64-gnu": "^1.5.7",
+    "@supabase/supabase-js": "^2.43.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250529.0",
