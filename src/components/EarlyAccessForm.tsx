@@ -18,11 +18,15 @@ export function EarlyAccessForm() {
       emailSchema.parse(email);
       setIsSubmitting(true);
 
-      // New fetch call to the /api/waitlist endpoint
-      const response = await fetch('/api/waitlist', {
+      // New fetch call to the Supabase Edge Function endpoint
+      const response = await fetch('https://ezwhmcpqdtlhokrbuufr.supabase.co/functions/v1/join-waitlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          // It's good practice to also include the anon key if your function isn't set to no-verify-jwt
+          // and doesn't use service_role for public access, though for this one it might not be strictly needed
+          // as it's designed to be called directly.
+          // 'apikey': 'YOUR_SUPABASE_ANON_KEY', // You would get this from your Supabase project API settings
         },
         body: JSON.stringify({ email }),
       });
